@@ -12,6 +12,7 @@
     "applescript": "^1.0.0",
     "menubar": "^5.2.3",
     "node-fetch": "^1.7.1",
+    "node-genius": "^1.1.0",
     "rxjs": "^5.4.0"
   }
 }
