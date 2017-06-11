@@ -6,6 +6,10 @@
 <br>
 </div>
 
+## Description
+
+- Icon http://emojione.com/
+
 ## Author
 
 Khoa Pham, onmyway133@gmail.com
