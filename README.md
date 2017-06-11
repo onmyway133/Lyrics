@@ -1,6 +1,6 @@
 # Lyrics
 
-<div align = "center">
+<div align = "center" width="150" height="150">
 <img src="Screenshots/Icon.png" />
 <br>
 <br>
