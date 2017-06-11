@@ -3,7 +3,10 @@ const Rx = require('rxjs/Rx')
 const TrackDetectors = require('./trackDetectors.js')
 const LyricFetchers = require('./lyricFetchers.js')
 
-const menubar = MenuBar()
+const menubar = MenuBar({
+  tooltip: 'Lyrics: click to show the lyric of the currenly playing song',
+  icon: 'Icon/Icon.png'
+})
 const separator = '---'
 
 menubar.on('ready', function ready () {
