@@ -13,8 +13,8 @@ menubar.on('ready', function ready () {
   console.log('hello world')
   const observable = TrackDetectors.detectTrack()
   observable.subscribe(
-    function (x) {
-      console.log(x)
+    function (json) {
+      LyricFetcher.fetchLyrics(json)
     },
     function (err) {
       console.log('Error: ' + err)
