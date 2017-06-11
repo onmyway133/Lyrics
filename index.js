@@ -1,10 +1,11 @@
-const menubar = require('menubar')
-const applescript = require('applescript')
+const MenuBar = require('menubar')
+const AppleScript = require('applescript')
+const Promise = require('promise')
 
-const mb = menubar()
+const menubar = MenuBar()
 const separator = '---'
 
-mb.on('ready', function ready () {
+menubar.on('ready', function ready () {
   console.log('hello world')
   detectCurrentTrack()
 })
@@ -21,7 +22,10 @@ function detectCurrentTrack() {
       return trackId & "---" & trackName & "---" & artworkUrl & "---" & artistName & "---" & albumName
     end tell
   `
-  applescript.execString(script, function(error, response) {
+  const promise = new Promise((resolve, reject) => {
+
+  })
+  AppleScript.execString(script, function(error, response) {
     if (response) {
       const parts = response.split('---')
       const json = {
@@ -31,7 +35,7 @@ function detectCurrentTrack() {
         artistName: parts[3],
         albumName: parts[4]
       }
-      console.log(response)
+      console.log(json)
     } else {
       console.log(error)
     }

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "applescript": "^1.0.0",
-    "menubar": "^5.2.3"
+    "menubar": "^5.2.3",
+    "rxjs": "^5.4.0"
   }
 }
