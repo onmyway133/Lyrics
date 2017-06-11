@@ -1,6 +1,10 @@
 const Rx = require('rxjs/Rx')
 const AppleScript = require('applescript')
 
+func detectTrack() {
+  return detectSpotifyTrack()
+}
+
 function detectSpotifyTrack() {
   var script = `
     tell application "Spotify"
@@ -36,5 +40,5 @@ function detectSpotifyTrack() {
 }
 
 module.exports = {
-  detectSpotifyTrack
+  detectTrack
 }

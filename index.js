@@ -1,7 +1,7 @@
 const MenuBar = require('menubar')
 const Rx = require('rxjs/Rx')
-const TrackDetectors = require('./trackDetectors.js')
-const LyricFetchers = require('./lyricFetchers.js')
+const TrackDetector = require('./trackDetector.js')
+const LyricFetcher = require('./lyricFetcher.js')
 
 const menubar = MenuBar({
   tooltip: 'Lyrics: click to show the lyric of the currenly playing song',
@@ -11,7 +11,7 @@ const separator = '---'
 
 menubar.on('ready', function ready () {
   console.log('hello world')
-  const observable = TrackDetectors.detectSpotifyTrack()
+  const observable = TrackDetectors.detectTrack()
   observable.subscribe(
     function (x) {
       console.log(x)
