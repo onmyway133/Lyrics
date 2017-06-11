@@ -11,7 +11,7 @@ const separator = '---'
 
 menubar.on('ready', function ready () {
   console.log('hello world')
-  const observable = TrackDetectors.detectTrack()
+  const observable = TrackDetector.detectTrack()
   observable.subscribe(
     function (json) {
       LyricFetcher.fetchLyrics(json)
