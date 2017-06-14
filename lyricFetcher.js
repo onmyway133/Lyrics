@@ -4,31 +4,25 @@ const Genius = require("node-genius");
 const geniusClient = new Genius('jVyKdgWaa8MLgyC08qJg2-eV7jtlio-7vNwuTlFmfVdBmKWqcSpWwbK14V9r7qS9')
 
 function fetchLyrics(json) {
-  return fetchFromGenius(json)
-}
-
-function fetchFromGenius(json) {
-  const geniusFetcher = Genius
-
-  const lyrics = Rx.Observable.create((observer) => {
-    geniusClient.search(json.trackName + ' ' + json.artistName, function (error, results) {
-      const object = JSON.parse(results)
-      const track = object.response.hits[0].result
-      if (track) {
-        observer.next(track)
-        observer.completed()
-      } else {
-        observer.error(error)
-      }
-    })
-  })
+  const observable = new GeniusFetcher().fetch(json)
+  observable.subscribe(
+    function (json) {
+      console.log(json)
+    },
+    function (err) {
+      console.log('Error: ' + err)
+    },
+    function () {
+      console.log('Completed')
+    }
+  )
 }
 
 class GeniusFetcher {
   fetch(json) {
-    return search(json)
+    return this.search(json)
       .flatMap((song) => {
-        return lyrics(song)
+        return this.lyrics(song)
       })
   }
 
@@ -39,7 +33,7 @@ class GeniusFetcher {
         const song = object.response.hits[0].result
         if (song) {
           observer.next(song)
-          observer.completed()
+          observer.complete()
         } else {
           observer.error(error)
         }
@@ -50,17 +44,18 @@ class GeniusFetcher {
   }
 
   lyrics(song) {
+    const url = 'https://genius.com' + song.path
+    const option = {
+      compress: true
+    }
     const observable = Rx.Observable.create((observer) => {
-      geniusClient.search(json.trackName + ' ' + json.artistName, function (error, results) {
-        const object = JSON.parse(results)
-        const song = object.response.hits[0].result
-        if (song) {
-          observer.next(song)
-          observer.completed()
-        } else {
-          observer.error(error)
-        }
-      })
+      Fetch(url, option)
+	      .then((res) => {
+          return res.text()
+        })
+	      .then((body) => {
+          console.log(body)
+        })
     })
 
     return observable
