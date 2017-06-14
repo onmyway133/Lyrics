@@ -9,8 +9,15 @@ const menubar = MenuBar({
 })
 const separator = '---'
 
-menubar.on('ready', function ready () {
-  console.log('hello world')
+menubar.on('ready', () => {
+  
+})
+
+menubar.on('show', () => {
+  detectAndFetch()
+})
+
+function detectAndFetch() {
   const observable = TrackDetector.detectTrack()
   observable.subscribe(
     function (json) {
@@ -23,4 +30,4 @@ menubar.on('ready', function ready () {
       console.log('Completed')
     }
   )
-})
+}
