@@ -9,19 +9,19 @@ const menubar = MenuBar({
 })
 const separator = '---'
 
-menubar.on('ready', () => {
-  
-})
-
 menubar.on('show', () => {
   detectAndFetch()
 })
 
 function detectAndFetch() {
   const observable = TrackDetector.detectTrack()
+    .flatMap((track) => {
+      return LyricFetcher.fetchLyrics(track)
+    })
+
   observable.subscribe(
-    function (json) {
-      LyricFetcher.fetchLyrics(json)
+    function (lyrics) {
+      update(lyrics)
     },
     function (err) {
       console.log('Error: ' + err)
@@ -30,4 +30,9 @@ function detectAndFetch() {
       console.log('Completed')
     }
   )
+}
+
+function update(lyrics) {
+  console.log(menubar.window.document)
+  // console.log(lyrics)
 }

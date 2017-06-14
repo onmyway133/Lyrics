@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "applescript": "^1.0.0",
+    "cheerio": "^1.0.0-rc.1",
     "menubar": "^5.2.3",
     "node-fetch": "^1.7.1",
     "node-genius": "^1.1.0",

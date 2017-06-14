@@ -2,20 +2,10 @@ const Rx = require('rxjs/Rx')
 const Fetch = require('node-fetch')
 const Genius = require("node-genius");
 const geniusClient = new Genius('jVyKdgWaa8MLgyC08qJg2-eV7jtlio-7vNwuTlFmfVdBmKWqcSpWwbK14V9r7qS9')
+const Cheerio = require('cheerio')
 
 function fetchLyrics(json) {
-  const observable = new GeniusFetcher().fetch(json)
-  observable.subscribe(
-    function (json) {
-      console.log(json)
-    },
-    function (err) {
-      console.log('Error: ' + err)
-    },
-    function () {
-      console.log('Completed')
-    }
-  )
+  return new GeniusFetcher().fetch(json)
 }
 
 class GeniusFetcher {
@@ -23,6 +13,9 @@ class GeniusFetcher {
     return this.search(json)
       .flatMap((song) => {
         return this.lyrics(song)
+      })
+      .map((body) => {
+        return this.parse(body)
       })
   }
 
@@ -54,11 +47,19 @@ class GeniusFetcher {
           return res.text()
         })
 	      .then((body) => {
-          console.log(body)
+          observer.next(body)
+          observer.complete()
         })
     })
 
     return observable
+  }
+
+  parse(body) {
+    const $ = Cheerio.load(body)
+    const lyrics = $('div.song_body-lyrics div.lyrics p').text()
+
+    return lyrics
   }
 }
 
