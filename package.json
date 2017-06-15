@@ -1,12 +1,12 @@
 {
   "name": "Lyrics",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
   "devDependencies": {
     "electron-prebuilt": "^1.4.13"
   },
   "scripts": {
-    "start": "electron index.js"
+    "start": "electron main.js"
   },
   "dependencies": {
     "applescript": "^1.0.0",
