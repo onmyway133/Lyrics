@@ -43,6 +43,5 @@ function detectAndFetch() {
 }
 
 function update(lyrics) {
-  console.log('about to send')
   ipc.send('lyrics', lyrics)
 }
