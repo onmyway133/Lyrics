@@ -4,7 +4,6 @@ const TrackDetector = require('./trackDetector.js')
 const LyricFetcher = require('./lyricFetcher.js')
 const Path = require('path')
 const Url = require('url')
-const ipc = require('electron').ipcMain
 
 const htmlUrl = Url.format({
   pathname: Path.join(__dirname, 'index.html'),
@@ -43,5 +42,5 @@ function detectAndFetch() {
 }
 
 function update(lyrics) {
-  ipc.send('lyrics', lyrics)
+  menubar.window.webContents.send('lyrics', lyrics)
 }
