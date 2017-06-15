@@ -2,10 +2,19 @@ const MenuBar = require('menubar')
 const Rx = require('rxjs/Rx')
 const TrackDetector = require('./trackDetector.js')
 const LyricFetcher = require('./lyricFetcher.js')
+const Path = require('path')
+const Url = require('url')
+
+const htmlUrl = Url.format({
+  pathname: Path.join(__dirname, 'index.html'),
+  protocol: 'file',
+  slashes: true
+})
 
 const menubar = MenuBar({
   tooltip: 'Lyrics: click to show the lyric of the currenly playing song',
-  icon: 'Icon/Icon.png'
+  icon: 'Icon/Icon.png',
+  index: htmlUrl
 })
 const separator = '---'
 
@@ -33,6 +42,5 @@ function detectAndFetch() {
 }
 
 function update(lyrics) {
-  console.log(menubar.window.document)
-  // console.log(lyrics)
+  console.log(menubar.window.webContents)
 }
