@@ -16,7 +16,9 @@ const menubar = MenuBar({
   icon: 'Icon/Icon.png',
   index: htmlUrl
 })
+
 const separator = '---'
+let currentTrack = {}
 
 menubar.on('show', () => {
   detectAndFetch()
@@ -25,7 +27,12 @@ menubar.on('show', () => {
 function detectAndFetch() {
   const observable = TrackDetector.detectTrack()
     .flatMap((track) => {
-      return LyricFetcher.fetchLyrics(track)
+      if (JSON.stringify(currentTrack) !== JSON.stringify(track)) {
+        currentTrack = track
+        return LyricFetcher.fetchLyrics(track)
+      } else {
+        return Rx.Observable.empty()
+      }
     })
 
   observable.subscribe(
