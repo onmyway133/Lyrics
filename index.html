@@ -4,8 +4,24 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <textarea class='lyrics'></textarea>
+    <div id="container">
+      <div id="header">
+        <div>
+          <img id="album">
+
+          </img>
+        </div>
+        <div id="info">
+          <p id="trackName"></p>
+          <p id="artistName"></p>
+        </div>
+      </div>
+      <div id="body">
+        <pre id="lyrics">
+
+        </pre>
+      </div>
+    </div>
     <script type="text/javascript">
       require('./renderer.js')
     </script>

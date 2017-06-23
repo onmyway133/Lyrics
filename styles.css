@@ -1,0 +1,22 @@
+body {
+  
+}
+
+#container {
+  display: flex;
+  background-color: red;
+  flex-flow: column;
+}
+
+#header {
+  display: flex;
+}
+
+#body {
+  display: flex;
+}
+
+#info {
+  display: flex;
+  flex-flow: column;
+}
