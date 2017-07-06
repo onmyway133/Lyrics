@@ -82,10 +82,18 @@ class ContentComponent extends React.Component {
 class ContentHeaderComponent extends React.Component {
   render() {
     const style = {
-      backgroundColor: 'red'
+      backgroundColor: 'green',
+      height: '150px'
     }
+
+    const imageStyle = {
+      height: '150px',
+      width: 'auto'
+    }
+
     return React.createElement('div', {style},
       React.createElement('img', {
+        style: imageStyle,
         src: this.props.artworkUrl
       }),
       React.createElement('p', {}, this.props.artistName),
@@ -98,7 +106,7 @@ class ContentHeaderComponent extends React.Component {
 class ContentBodyComponent extends React.Component {
   render() {
     const style = {
-      backgroundColor: 'blue'
+      backgroundColor: 'red'
     }
 
     return React.createElement('div', {style},
@@ -130,9 +138,7 @@ ipc.on('loading', (event, arg) => {
 
 ipc.on('content', (event, arg) => {
   reload({
-    content: {
-      arg
-    }
+    content: arg
   })
 })
 

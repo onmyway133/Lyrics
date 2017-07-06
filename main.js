@@ -22,7 +22,6 @@ let currentTrack = {}
 let subscription = null
 
 menubar.on('show', () => {
-  notifyLoading()
   detectAndFetch()
 })
 
@@ -37,6 +36,7 @@ function detectAndFetch() {
         return Rx.Observable.empty()
       }
 
+      notifyLoading()
       currentTrack = track
       return LyricFetcher
         .fetchLyrics(track)
