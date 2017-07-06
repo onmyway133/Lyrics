@@ -33,19 +33,19 @@ function detectAndFetch() {
 
   const observable = TrackDetector.detectTrack()
     .flatMap((track) => {
-      if (JSON.stringify(currentTrack) !== JSON.stringify(track)) {
-        currentTrack = track
-        return LyricFetcher
-          .fetchLyrics(track)
-          .map((lyrics) => {
-            return {
-              track,
-              lyrics
-            }
-          })
-      } else {
+      if (JSON.stringify(currentTrack) === JSON.stringify(track)) {
         return Rx.Observable.empty()
-      }
+      } 
+
+      currentTrack = track
+      return LyricFetcher
+        .fetchLyrics(track)
+        .map((lyrics) => {
+          return {
+            track,
+            lyrics
+          }
+        })
     })
 
   subscription = observable.subscribe(
