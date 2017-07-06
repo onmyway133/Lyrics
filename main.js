@@ -1,7 +1,7 @@
 const MenuBar = require('menubar')
 const Rx = require('rxjs/Rx')
-const TrackDetector = require('./trackDetector.js')
-const LyricFetcher = require('./lyricFetcher.js')
+const TrackDetector = require('./TrackDetector.js')
+const LyricFetcher = require('./LyricFetcher.js')
 const Path = require('path')
 const Url = require('url')
 
