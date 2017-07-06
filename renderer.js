@@ -8,9 +8,8 @@ const PropTypes = require('prop-types')
 class Application extends React.Component {
   render() {
     const style = {
-      backgroundColor: 'yellow'
-      // display: 'flex',
-      // alignItems: 'stretch'
+      display: 'flex',
+      alignItems: 'stretch'
     }
 
     return React.createElement('div', {style},
@@ -33,7 +32,9 @@ class LoadingComponent extends React.Component {
     const style = {
       display: this.props.visible ? 'flex' : 'none',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      width: '100%',
+      backgroundColor: 'yellow'
     }
 
     return React.createElement('div', {style}, 
@@ -51,6 +52,7 @@ class ErrorComponent extends React.Component {
   render() {
     const style = {
       display: this.props.visible ? 'flex' : 'none',
+      width: '100%'
     }
 
     return React.createElement('div', {style},
@@ -66,9 +68,10 @@ ErrorComponent.propTypes = {
 // Content
 class ContentComponent extends React.Component {
   render() {
-    const style = {,
+    const style = {
       flexFlow: 'column',
       display: this.props.visible ? 'flex' : 'none',
+      width: '100%'
     }
 
     return React.createElement('div', {style},
