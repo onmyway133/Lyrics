@@ -9,7 +9,8 @@ class Application extends React.Component {
   render() {
     const style = {
       display: 'flex',
-      alignItems: 'stretch'
+      alignItems: 'stretch',
+      width: '100%'
     }
 
     return React.createElement('div', {style},
@@ -52,7 +53,9 @@ class ErrorComponent extends React.Component {
   render() {
     const style = {
       display: this.props.visible ? 'flex' : 'none',
-      width: '100%'
+      width: '100%',
+      alignItems: 'center',
+      justifyContent: 'center'
     }
 
     return React.createElement('div', {style},
