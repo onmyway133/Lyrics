@@ -83,12 +83,18 @@ class ContentHeaderComponent extends React.Component {
   render() {
     const style = {
       backgroundColor: 'green',
-      height: '150px'
+      height: '150px',
+      width: '100%'
     }
 
     const imageStyle = {
       height: '150px',
-      width: 'auto'
+      width: 'auto',
+      float: 'left'
+    }
+
+    const textStyle = {
+      margin: '5px'
     }
 
     return React.createElement('div', {style},
@@ -96,8 +102,8 @@ class ContentHeaderComponent extends React.Component {
         style: imageStyle,
         src: this.props.artworkUrl
       }),
-      React.createElement('p', {}, this.props.artistName),
-      React.createElement('p', {}, this.props.trackName)
+      React.createElement('h2', {style: textStyle}, '🎶 ' + this.props.trackName),
+      React.createElement('h3', {style: textStyle}, '👨‍🎤 ' + this.props.artistName)
     )
   }
 }
@@ -106,12 +112,13 @@ class ContentHeaderComponent extends React.Component {
 class ContentBodyComponent extends React.Component {
   render() {
     const style = {
-      backgroundColor: 'red'
+      backgroundColor: 'red',
+      width: '100%'
     }
 
     return React.createElement('div', {style},
       React.createElement('p', {}, this.props.url),
-      React.createElement('p', {}, this.props.lyrics)
+      React.createElement('pre', {}, this.props.lyrics)
     )
   }
 }
