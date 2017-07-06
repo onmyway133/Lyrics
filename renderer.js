@@ -14,11 +14,11 @@ class Application extends React.Component {
     }
 
     if (this.props.loading) {
-      return React.createElement(LoadingComponent, {})
+      return React.createElement(LoadingComponent)
     } else if (this.props.content) {
-      return React.createElement(ContentComponent, {}, this.props.content)
+      return React.createElement(ContentComponent, this.props.content)
     } else {
-      return React.createElement(ErrorComponent, {})
+      return React.createElement(ErrorComponent)
     }
   }
 }
@@ -72,8 +72,8 @@ class ContentComponent extends React.Component {
     }
 
     return React.createElement('div', {style},
-      React.createElement(ContentHeaderComponent, {}, this.props),
-      React.createElement(ContentBodyComponent, {}, this.props)
+      React.createElement(ContentHeaderComponent, this.props),
+      React.createElement(ContentBodyComponent, this.props)
     )
   }
 }
@@ -108,7 +108,7 @@ class ContentBodyComponent extends React.Component {
 // Reload
 function reload(state) {
   ReactDOM.render(
-    React.createElement(Application, {}, state),
+    React.createElement(Application, state),
     document.getElementById('root')
   )
 }
