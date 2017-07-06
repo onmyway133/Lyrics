@@ -3,7 +3,7 @@ const Cheerio = require('cheerio')
 const React = require('react')
 const ReactDOM = require('react-dom')
 
-// Component
+// Application
 class Application extends React.Component {
   render() {
     const style = {
@@ -19,26 +19,48 @@ class Application extends React.Component {
   }
 }
 
+// Loading
 class LoadingComponent extends React.Component {
   render() {
-    return React.createElement('div', {}, 
+    const style = {
+      visibility: this.props.visible ? 'visible' : 'hidden'
+    }
+
+    return React.createElement('div', {style}, 
       React.createElement('p', {}, 'Loading')
     )
   }
 }
 
+LoadingComponent.propTypes = {
+  visible: React.PropTypes.bool
+}
+
+// Error
 class ErrorComponent extends React.Component {
   render() {
+    const style = {
+      visibility: this.props.visible ? 'visible' : 'hidden'
+    }
+
     return React.createElement('div', {},
       React.createElement('p', {}, 'Error')
     )
   }
 }
 
+ErrorComponent.propTypes = {
+  visible: React.PropTypes.bool
+}
+
+// Content
 class ContentComponent extends React.Component {
   render() {
     const style = {
-      backgroundColor: 'blue'
+      backgroundColor: 'blue',
+      display: 'flex',
+      flexFlow: 'column',
+      visibility: this.props.visible ? 'visible' : 'hidden'
     }
 
     return React.createElement('div', {style},
@@ -48,15 +70,28 @@ class ContentComponent extends React.Component {
   }
 }
 
+ContentComponent.propTypes = {
+  visible: React.PropTypes.bool
+}
+
+// Header
 class ContentHeaderComponent extends React.Component {
   render() {
-    return React.createElement('div', {})
+    const style = {
+      backgroundColor: 'red'
+    }
+    return React.createElement('div', {style})
   }
 }
 
+// Body
 class ContentBodyComponent extends React.Component {
   render() {
-    return React.createElement('div', {})
+    const style = {
+      backgroundColor: 'blue'
+    }
+
+    return React.createElement('div', {style})
   }
 }
 
