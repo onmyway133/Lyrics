@@ -2,6 +2,7 @@ const ipc = require('electron').ipcRenderer
 const Cheerio = require('cheerio')
 const React = require('react')
 const ReactDOM = require('react-dom')
+const PropTypes = require('prop-types')
 
 // Application
 class Application extends React.Component {
@@ -33,7 +34,7 @@ class LoadingComponent extends React.Component {
 }
 
 LoadingComponent.propTypes = {
-  visible: React.PropTypes.bool
+  visible: PropTypes.bool
 }
 
 // Error
@@ -50,7 +51,7 @@ class ErrorComponent extends React.Component {
 }
 
 ErrorComponent.propTypes = {
-  visible: React.PropTypes.bool
+  visible: PropTypes.bool
 }
 
 // Content
@@ -71,7 +72,7 @@ class ContentComponent extends React.Component {
 }
 
 ContentComponent.propTypes = {
-  visible: React.PropTypes.bool
+  visible: PropTypes.bool
 }
 
 // Header
