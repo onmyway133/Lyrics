@@ -19,35 +19,53 @@ const menubar = MenuBar({
 
 const separator = '---'
 let currentTrack = {}
+let subscription = null
 
 menubar.on('show', () => {
+  notifyLoading()
   detectAndFetch()
 })
 
 function detectAndFetch() {
+  if (subscription != null) {
+    subscription.unsubscribe()
+  }
+
   const observable = TrackDetector.detectTrack()
     .flatMap((track) => {
       if (JSON.stringify(currentTrack) !== JSON.stringify(track)) {
         currentTrack = track
-        return LyricFetcher.fetchLyrics(track)
+        return LyricFetcher
+          .fetchLyrics(track)
+          .map((lyrics) => {
+            return {
+              track,
+              lyrics
+            }
+          })
       } else {
         return Rx.Observable.empty()
       }
     })
 
-  observable.subscribe(
+  subscription = observable.subscribe(
     function (lyrics) {
-      update(lyrics)
+      notifyContent(lyrics)
     },
     function (err) {
-      console.log('Error: ' + err)
-    },
-    function () {
-      console.log('Completed')
+      notifyError()
     }
   )
 }
 
-function update(lyrics) {
-  menubar.window.webContents.send('lyrics', lyrics)
+function notifyLoading() {
+  menubar.window.webContents.send('loading')
+}
+
+function notifyError() {
+  menubar.window.webContents.send('error')
+}
+
+function notifyContent(data) {
+  menubar.window.webContents.send('content', data)
 }

@@ -1,16 +1,46 @@
 const ipc = require('electron').ipcRenderer
 const Cheerio = require('cheerio')
+const React = require('react')
+const ReactDOM = require('react-dom')
 
-ipc.on('lyrics', (event, arg) => {
+class Application extends React.Component {
+  render() {
+    const style = {
+      backgroundColor: 'blue'
+    }
+
+    return React.createElement('div', {style})
+  }
+}
+
+function reload() {
+  ReactDOM.render(
+    React.createElement(Application, {}),
+    document.getElementById('root')
+  )
+}
+
+// Reload
+reload()
+
+ipc.on('loading', (event, arg) => {
+  
+})
+
+ipc.on('content', (event, arg) => {
   let lyrics = document.getElementById('lyrics')
-  lyrics.innerHTML = arg
+  lyrics.innerText = arg.lyrics
 
   let trackName = document.getElementById('trackName')
-  trackName.innerText = 'Track Name'
+  trackName.innerText = arg.track.trackName
 
   let artistName = document.getElementById('artistName')
-  artistName.innerText = 'Artist Name'
+  artistName.innerText = arg.track.artistName
 
   let album = document.getElementById('album')
-  album.src = 'https://cloud.githubusercontent.com/assets/2284279/26763340/af804aac-4951-11e7-9006-d0fa8be3d9b5.png'
+  album.src = arg.track.artworkUrl
+})
+
+ipc.on('error', (event, arg) => {
+  
 })

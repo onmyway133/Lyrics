@@ -1,15 +1,16 @@
-body {
-  
-}
-
 #container {
   display: flex;
-  background-color: red;
   flex-flow: column;
 }
 
 #header {
   display: flex;
+  height: 150pt;
+}
+
+img#album {
+  height: 100%;
+  width: 150pt;
 }
 
 #body {
