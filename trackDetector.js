@@ -1,6 +1,7 @@
 const Rx = require('rxjs/Rx')
 const AppleScript = require('applescript')
 
+// Return Observable<{track}>
 function detectTrack() {
   return detectSpotifyTrack()
 }

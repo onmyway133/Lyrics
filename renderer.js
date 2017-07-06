@@ -72,8 +72,8 @@ class ContentComponent extends React.Component {
     }
 
     return React.createElement('div', {style},
-      React.createElement(ContentHeaderComponent, this.props),
-      React.createElement(ContentBodyComponent, this.props)
+      React.createElement(ContentHeaderComponent, this.props.track),
+      React.createElement(ContentBodyComponent, this.props.lyrics)
     )
   }
 }
@@ -85,9 +85,11 @@ class ContentHeaderComponent extends React.Component {
       backgroundColor: 'red'
     }
     return React.createElement('div', {style},
-      React.createElement('img', {src: this.props.track.artworkUrl}),
-      React.createElement('p', {}, this.props.track.artistName),
-      React.createElement('p', {}, this.props.track.trackName)
+      React.createElement('img', {
+        src: this.props.artworkUrl
+      }),
+      React.createElement('p', {}, this.props.artistName),
+      React.createElement('p', {}, this.props.trackName)
     )
   }
 }
@@ -100,7 +102,8 @@ class ContentBodyComponent extends React.Component {
     }
 
     return React.createElement('div', {style},
-      React.createElement('p', {}, this.props.lyrics.lyrics)
+      React.createElement('p', {}, this.props.url),
+      React.createElement('p', {}, this.props.lyrics)
     )
   }
 }

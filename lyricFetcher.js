@@ -4,6 +4,7 @@ const Genius = require("node-genius");
 const geniusClient = new Genius('jVyKdgWaa8MLgyC08qJg2-eV7jtlio-7vNwuTlFmfVdBmKWqcSpWwbK14V9r7qS9')
 const Cheerio = require('cheerio')
 
+// Return Observable<{url, lyrics}>
 function fetchLyrics(json) {
   return new GeniusFetcher().fetch(json)
 }
@@ -14,11 +15,15 @@ class GeniusFetcher {
       .flatMap((song) => {
         return this.lyrics(song)
       })
-      .map((body) => {
-        return this.parse(body)
+      .map((data) => {
+        return {
+          url: data.url,
+          lyrics: this.parse(data.body)
+        }
       })
   }
 
+  // Returns Observable<song>
   search(json) {
     const observable = Rx.Observable.create((observer) => {
       geniusClient.search(json.trackName + ' ' + json.artistName, function (error, results) {
@@ -36,6 +41,7 @@ class GeniusFetcher {
     return observable
   }
 
+  // Return Observable<{url, body}>
   lyrics(song) {
     const url = 'https://genius.com' + song.path
     const option = {
@@ -49,7 +55,7 @@ class GeniusFetcher {
 	      .then((body) => {
           observer.next({
             url,
-            lyrics
+            body
           })
           observer.complete()
         })

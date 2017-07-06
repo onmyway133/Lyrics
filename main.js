@@ -35,7 +35,7 @@ function detectAndFetch() {
     .flatMap((track) => {
       if (JSON.stringify(currentTrack) === JSON.stringify(track)) {
         return Rx.Observable.empty()
-      } 
+      }
 
       currentTrack = track
       return LyricFetcher
