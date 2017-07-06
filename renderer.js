@@ -8,14 +8,21 @@ const PropTypes = require('prop-types')
 class Application extends React.Component {
   render() {
     const style = {
-      width: 'auto',
-      height: 'auto'
+      backgroundColor: 'yellow'
+      // display: 'flex',
+      // alignItems: 'stretch'
     }
 
     return React.createElement('div', {style},
-      React.createElement(LoadingComponent, {}),
-      React.createElement(ContentComponent, {}),
-      React.createElement(ErrorComponent, {})
+      React.createElement(LoadingComponent, {
+        visible: true
+      }),
+      React.createElement(ContentComponent, {
+        visible: false
+      }),
+      React.createElement(ErrorComponent, {
+        visible: false
+      })
     )
   }
 }
@@ -24,7 +31,9 @@ class Application extends React.Component {
 class LoadingComponent extends React.Component {
   render() {
     const style = {
-      visibility: this.props.visible ? 'visible' : 'hidden'
+      display: this.props.visible ? 'flex' : 'none',
+      alignItems: 'center',
+      justifyContent: 'center'
     }
 
     return React.createElement('div', {style}, 
@@ -41,10 +50,10 @@ LoadingComponent.propTypes = {
 class ErrorComponent extends React.Component {
   render() {
     const style = {
-      visibility: this.props.visible ? 'visible' : 'hidden'
+      display: this.props.visible ? 'flex' : 'none',
     }
 
-    return React.createElement('div', {},
+    return React.createElement('div', {style},
       React.createElement('p', {}, 'Error')
     )
   }
@@ -57,11 +66,9 @@ ErrorComponent.propTypes = {
 // Content
 class ContentComponent extends React.Component {
   render() {
-    const style = {
-      backgroundColor: 'blue',
-      display: 'flex',
+    const style = {,
       flexFlow: 'column',
-      visibility: this.props.visible ? 'visible' : 'hidden'
+      display: this.props.visible ? 'flex' : 'none',
     }
 
     return React.createElement('div', {style},
