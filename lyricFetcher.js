@@ -47,7 +47,10 @@ class GeniusFetcher {
           return res.text()
         })
 	      .then((body) => {
-          observer.next(body)
+          observer.next({
+            url,
+            lyrics
+          })
           observer.complete()
         })
     })

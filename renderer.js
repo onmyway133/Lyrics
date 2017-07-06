@@ -13,25 +13,27 @@ class Application extends React.Component {
       width: '100%'
     }
 
-    return React.createElement('div', {style},
-      React.createElement(LoadingComponent, {
-        visible: true
-      }),
-      React.createElement(ContentComponent, {
-        visible: false
-      }),
-      React.createElement(ErrorComponent, {
-        visible: false
-      })
-    )
+    if (this.props.loading) {
+      return React.createElement(LoadingComponent, {})
+    } else if (this.props.content) {
+      return React.createElement(ContentComponent, {}, this.props.content)
+    } else {
+      return React.createElement(ErrorComponent, {})
+    }
   }
+}
+
+Application.propTypes = {
+  loading: PropTypes.bool,
+  error: PropTypes.bool,
+  content: PropTypes.object
 }
 
 // Loading
 class LoadingComponent extends React.Component {
   render() {
     const style = {
-      display: this.props.visible ? 'flex' : 'none',
+      display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       width: '100%',
@@ -44,15 +46,11 @@ class LoadingComponent extends React.Component {
   }
 }
 
-LoadingComponent.propTypes = {
-  visible: PropTypes.bool
-}
-
 // Error
 class ErrorComponent extends React.Component {
   render() {
     const style = {
-      display: this.props.visible ? 'flex' : 'none',
+      display: 'flex',
       width: '100%',
       alignItems: 'center',
       justifyContent: 'center'
@@ -64,28 +62,20 @@ class ErrorComponent extends React.Component {
   }
 }
 
-ErrorComponent.propTypes = {
-  visible: PropTypes.bool
-}
-
 // Content
 class ContentComponent extends React.Component {
   render() {
     const style = {
       flexFlow: 'column',
-      display: this.props.visible ? 'flex' : 'none',
+      display: 'flex',
       width: '100%'
     }
 
     return React.createElement('div', {style},
-      React.createElement(ContentHeaderComponent, {}),
-      React.createElement(ContentBodyComponent, {})
+      React.createElement(ContentHeaderComponent, {}, this.props),
+      React.createElement(ContentBodyComponent, {}, this.props)
     )
   }
-}
-
-ContentComponent.propTypes = {
-  visible: PropTypes.bool
 }
 
 // Header
@@ -94,7 +84,11 @@ class ContentHeaderComponent extends React.Component {
     const style = {
       backgroundColor: 'red'
     }
-    return React.createElement('div', {style})
+    return React.createElement('div', {style},
+      React.createElement('img', {src: this.props.track.artworkUrl}),
+      React.createElement('p', {}, this.props.track.artistName),
+      React.createElement('p', {}, this.props.track.trackName)
+    )
   }
 }
 
@@ -105,41 +99,42 @@ class ContentBodyComponent extends React.Component {
       backgroundColor: 'blue'
     }
 
-    return React.createElement('div', {style})
+    return React.createElement('div', {style},
+      React.createElement('p', {}, this.props.lyrics.lyrics)
+    )
   }
 }
 
 // Reload
-function reload() {
+function reload(state) {
   ReactDOM.render(
-    React.createElement(Application, {}),
+    React.createElement(Application, {}, state),
     document.getElementById('root')
   )
 }
 
 // Reload initially
-reload()
+reload({
+  loading: true
+})
 
 // IPC
-
 ipc.on('loading', (event, arg) => {
-  
+  reload({
+    loading: true
+  })
 })
 
 ipc.on('content', (event, arg) => {
-  let lyrics = document.getElementById('lyrics')
-  lyrics.innerText = arg.lyrics
-
-  let trackName = document.getElementById('trackName')
-  trackName.innerText = arg.track.trackName
-
-  let artistName = document.getElementById('artistName')
-  artistName.innerText = arg.track.artistName
-
-  let album = document.getElementById('album')
-  album.src = arg.track.artworkUrl
+  reload({
+    content: {
+      arg
+    }
+  })
 })
 
 ipc.on('error', (event, arg) => {
-  
+  reload({
+    error: true
+  })
 })
