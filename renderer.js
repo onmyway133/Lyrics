@@ -7,13 +7,6 @@ const PropTypes = require('prop-types')
 // Application
 class Application extends React.Component {
   render() {
-    const style = {
-      display: 'flex',
-      alignItems: 'stretch',
-      margin: '100px 100px 100px 100px',
-      width: '100%'
-    }
-
     if (this.props.loading) {
       return React.createElement(LoadingComponent)
     } else if (this.props.content) {
@@ -38,6 +31,7 @@ class LoadingComponent extends React.Component {
       alignItems: 'center',
       justifyContent: 'center',
       width: '100%',
+      height: '100%',
       backgroundColor: 'yellow'
     }
 
@@ -67,7 +61,7 @@ class ErrorComponent extends React.Component {
 class ContentComponent extends React.Component {
   render() {
     const style = {
-      flexFlow: 'column',
+      flexDirection: 'column',
       display: 'flex',
       width: '100%'
     }
@@ -83,20 +77,30 @@ class ContentComponent extends React.Component {
 class ContentHeaderComponent extends React.Component {
   render() {
     const style = {
-      backgroundColor: 'green',
-      height: '150px',
-      width: '100%'
+      backgroundColor: '#282828',
+      height: '200px',
+      width: '100%',
+      display: 'flex',
+      alignItems: 'stretch'
     }
 
     const imageStyle = {
-      height: '150px',
-      width: 'auto',
-      float: 'left',
-      borderRadius: '10px'
+      width: '100px',
+      height: '100px'
     }
 
-    const textStyle = {
-      margin: '5px'
+    const innerDivStyle = {
+      display: 'flex',
+      flexDirection: 'column',
+      marginLeft: '30px'
+    }
+
+    const trackNameTextStyle = {
+      color: 'white'
+    }
+
+    const artistNameTextStyle = {
+      color: '#A0A0A0'
     }
 
     return React.createElement('div', {style},
@@ -104,8 +108,10 @@ class ContentHeaderComponent extends React.Component {
         style: imageStyle,
         src: this.props.artworkUrl
       }),
-      React.createElement('h2', {style: textStyle}, '🎶 ' + this.props.trackName),
-      React.createElement('h3', {style: textStyle}, '👨‍🎤 ' + this.props.artistName)
+      React.createElement('div', {style: innerDivStyle}, 
+        React.createElement('h1', {style: trackNameTextStyle}, this.props.trackName),
+        React.createElement('h4', {style: artistNameTextStyle}, '👨‍🎤 ' + this.props.artistName) 
+      )
     )
   }
 }
