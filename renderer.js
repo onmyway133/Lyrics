@@ -103,9 +103,7 @@ class ContentHeaderComponent extends React.Component {
     }
 
     const artistNameTextStyle = {
-      color: '#A0A0A0',
-      position: 'relative',
-      top: '-40px'
+      color: '#A0A0A0'
     }
 
     return React.createElement('div', {style},
@@ -143,7 +141,10 @@ class ContentBodyComponent extends React.Component {
     }
 
     return React.createElement('div', {style},
-      React.createElement('p', {style: urlStyle}, 'From ' + this.props.url),
+      React.createElement('a', {
+        style: urlStyle,
+        href: this.props.url
+      }, 'From ' + this.props.url),
       React.createElement('div', {style: textStyle}, this.props.lyrics)
     )
   }
