@@ -103,7 +103,9 @@ class ContentHeaderComponent extends React.Component {
     }
 
     const artistNameTextStyle = {
-      color: '#A0A0A0'
+      color: '#A0A0A0',
+      position: 'relative',
+      top: '-40px'
     }
 
     return React.createElement('div', {style},
