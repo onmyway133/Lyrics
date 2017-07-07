@@ -62,8 +62,7 @@ class ContentComponent extends React.Component {
   render() {
     const style = {
       flexDirection: 'column',
-      display: 'flex',
-      width: '100%'
+      display: 'flex'
     }
 
     return React.createElement('div', {style},
@@ -78,21 +77,25 @@ class ContentHeaderComponent extends React.Component {
   render() {
     const style = {
       backgroundColor: '#282828',
-      height: '200px',
+      height: '150px',
       width: '100%',
       display: 'flex',
       alignItems: 'stretch'
     }
 
     const imageStyle = {
-      width: '100px',
-      height: '100px'
+      marginTop: '10px',
+      marginLeft: '10px',
+      height: 'calc(90% - 10px)',
+      width: 'auto',
+      borderRadius: '5px'
     }
 
     const innerDivStyle = {
       display: 'flex',
       flexDirection: 'column',
-      marginLeft: '30px'
+      marginLeft: '20px',
+      justifyContent: 'center'
     }
 
     const trackNameTextStyle = {
@@ -120,17 +123,25 @@ class ContentHeaderComponent extends React.Component {
 class ContentBodyComponent extends React.Component {
   render() {
     const style = {
-      backgroundColor: 'red',
-      width: '100%'
+      backgroundColor: '#272822'
     }
 
     const textStyle = {
       overflow: 'auto',
-      whiteSpace: 'pre-wrap'
+      whiteSpace: 'pre-wrap',
+      margin: '10px',
+      color: 'white',
+      fontFamily: 'Sans-serif'
+    }
+
+    const urlStyle = {
+      color: '#A0A0A0',
+      marginLeft: '10px',
+      fontFamily: 'Sans-serif'
     }
 
     return React.createElement('div', {style},
-      React.createElement('p', {}, this.props.url),
+      React.createElement('p', {style: urlStyle}, 'From ' + this.props.url),
       React.createElement('div', {style: textStyle}, this.props.lyrics)
     )
   }
