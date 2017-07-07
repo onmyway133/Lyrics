@@ -123,21 +123,21 @@ class ContentHeaderComponent extends React.Component {
 class ContentBodyComponent extends React.Component {
   render() {
     const style = {
-      backgroundColor: '#272822'
+      backgroundColor: '#272822',
+      padding: '10px'
+    }
+
+    const urlStyle = {
+      color: '#A0A0A0',
+      fontFamily: 'Sans-serif'
     }
 
     const textStyle = {
       overflow: 'auto',
       whiteSpace: 'pre-wrap',
-      margin: '10px',
       color: 'white',
-      fontFamily: 'Sans-serif'
-    }
-
-    const urlStyle = {
-      color: '#A0A0A0',
-      marginLeft: '10px',
-      fontFamily: 'Sans-serif'
+      fontFamily: 'Sans-serif',
+      marginTop: '10px'
     }
 
     return React.createElement('div', {style},
