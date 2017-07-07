@@ -14,7 +14,9 @@ const htmlUrl = Url.format({
 const menubar = MenuBar({
   tooltip: 'Lyrics: click to show the lyric of the currenly playing song',
   icon: 'Icon/Icon.png',
-  index: htmlUrl
+  index: htmlUrl,
+  minWidth: 500,
+  minHeight: 400
 })
 
 const separator = '---'
