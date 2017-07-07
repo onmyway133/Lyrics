@@ -1,5 +1,6 @@
 {
   "name": "Lyrics",
+  "productName": "Electron tutorial app",
   "version": "1.0.0",
   "main": "main.js",
   "devDependencies": {
@@ -11,6 +12,7 @@
   "dependencies": {
     "applescript": "^1.0.0",
     "cheerio": "^1.0.0-rc.1",
+    "electron-packager": "^8.7.2",
     "menubar": "^5.2.3",
     "node-fetch": "^1.7.1",
     "node-genius": "^1.1.0",
