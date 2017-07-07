@@ -10,6 +10,7 @@ class Application extends React.Component {
     const style = {
       display: 'flex',
       alignItems: 'stretch',
+      margin: '100px 100px 100px 100px',
       width: '100%'
     }
 
@@ -90,7 +91,8 @@ class ContentHeaderComponent extends React.Component {
     const imageStyle = {
       height: '150px',
       width: 'auto',
-      float: 'left'
+      float: 'left',
+      borderRadius: '10px'
     }
 
     const textStyle = {
@@ -116,9 +118,14 @@ class ContentBodyComponent extends React.Component {
       width: '100%'
     }
 
+    const textStyle = {
+      overflow: 'auto',
+      whiteSpace: 'pre-wrap'
+    }
+
     return React.createElement('div', {style},
       React.createElement('p', {}, this.props.url),
-      React.createElement('pre', {}, this.props.lyrics)
+      React.createElement('div', {style: textStyle}, this.props.lyrics)
     )
   }
 }
