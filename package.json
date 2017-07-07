@@ -1,13 +1,14 @@
 {
-  "name": "Lyrics",
-  "productName": "Electron tutorial app",
+  "name": "lyrics",
+  "productName": "Lyrics",
   "version": "1.0.0",
   "main": "main.js",
   "devDependencies": {
     "electron-prebuilt": "^1.4.13"
   },
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron main.js",
+    "release": "electron-packager . --icon=Icon/Icon@2x.png"
   },
   "dependencies": {
     "applescript": "^1.0.0",
