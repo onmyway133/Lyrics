@@ -6,6 +6,8 @@ const LoadingComponent = require('./LoadingComponent.js')
 const ErrorComponent = require('./ErrorComponent.js')
 const ContentComponent = require('./ContentComponent.js')
 
+const Remote = require('electron').remote
+
 class Application extends React.Component {
   render() {
     let style = {
@@ -22,7 +24,7 @@ class Application extends React.Component {
       this.loadChild(),
       React.createElement('button', {
         style: buttonStyle,
-        onClick: this.close
+        onClick: this.handleClose
       }, '❌')
     )
   }
@@ -37,8 +39,9 @@ class Application extends React.Component {
     }
   }
 
-  close() {
-    
+  handleClose() {
+    const window = Remote.getCurrentWindow()
+    window.close()
   }
 }
 

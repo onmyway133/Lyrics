@@ -4,7 +4,7 @@ const TrackDetector = require('./TrackDetector.js')
 const LyricFetcher = require('./LyricFetcher.js')
 const Path = require('path')
 const Url = require('url')
-const app = require('electron').app
+const App = require('electron').app
 
 const htmlUrl = Url.format({
   pathname: Path.join(__dirname, 'index.html'),
@@ -28,8 +28,8 @@ menubar.on('show', () => {
   detectAndFetch()
 })
 
-app.on('window-all-closed', () => {
-  app.quit()
+App.on('window-all-closed', () => {
+  App.quit()
 })
 
 function detectAndFetch() {
