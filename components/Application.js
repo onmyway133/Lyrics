@@ -11,7 +11,9 @@ const Remote = require('electron').remote
 class Application extends React.Component {
   render() {
     let style = {
-
+      display: 'flex',
+      width: '100%',
+      alignSelf: 'stretch'
     }
 
     let buttonStyle = {
@@ -30,6 +32,8 @@ class Application extends React.Component {
   }
 
   loadChild() {
+    return React.createElement(ErrorComponent)
+
     if (this.props.loading) {
       return React.createElement(LoadingComponent)
     } else if (this.props.content) {

@@ -6,8 +6,9 @@ class ErrorComponent extends React.Component {
     const style = {
       display: 'flex',
       width: '100%',
-      alignItems: 'center',
-      justifyContent: 'center'
+      alignSelf: 'stretch',
+      justifyContent: 'center',
+      alignItems: 'center'
     }
 
     return React.createElement('div', {style},
@@ -15,3 +16,5 @@ class ErrorComponent extends React.Component {
     )
   }
 }
+
+module.exports = ErrorComponent
