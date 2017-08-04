@@ -71,7 +71,7 @@ class ContentHeaderComponent extends React.Component {
 class ContentBodyComponent extends React.Component {
   constructor(props) {
     super(props)
-    this.urlClicked= this.urlClicked.bind(this)
+    this.urlClicked = this.urlClicked.bind(this)
   }
 
   render() {
