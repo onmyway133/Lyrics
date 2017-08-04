@@ -9,14 +9,19 @@
 ## Description
 
 - Icon http://emojione.com/
+- Download from https://github.com/onmyway133/Lyrics/releases
 
 ### Lyric
+
+Get lyrics from the following sources
 
 - [x] Genius
 - [ ] AZ Lyrics
 - [ ] Musix Match
 
 ### Song
+
+Detect songs from the following players
 
 - [x] Spotify
 - [ ] Youtube
