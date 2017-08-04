@@ -13,15 +13,19 @@ class LoadingComponent extends React.Component {
     }
 
     const imageStyle = {
-      height: '50%',
-      width: 'auto'
+      
+    }
+
+    const textStyle = {
+
     }
 
     return React.createElement('div', {style}, 
       React.createElement('img', {
         style: imageStyle,
         src: './images/loading.gif'
-      })
+      }),
+      React.createElement('p', {style: textStyle}, 'Loading')
     )
   }
 }

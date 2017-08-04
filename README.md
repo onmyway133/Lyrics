@@ -1,9 +1,9 @@
 # Lyrics
 
 <div align = "center">
-<img src="Screenshots/Icon.png" width="150" height="150" />
-<br>
-<br>
+<img src="Screenshots/Icon.png" width="130" height="130" />
+<br />
+<img src="Screenshots/Banner.png" height="400"/>
 </div>
 
 ## Description
