@@ -6,9 +6,8 @@ const shell = require('electron').shell
 class ContentComponent extends React.Component {
   render() {
     const style = {
-      // Can't compose flex !!??
-      // flexDirection: 'column',
-      // display: 'flex',
+      flexDirection: 'column',
+      display: 'flex',
       width: '100%'
     }
 
@@ -87,7 +86,6 @@ class ContentBodyComponent extends React.Component {
     }
 
     const textStyle = {
-      overflow: 'auto',
       whiteSpace: 'pre-wrap',
       color: '#F8F8F0',
       fontFamily: 'Sans-serif',
