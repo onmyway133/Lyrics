@@ -3,6 +3,7 @@ const Cheerio = require('cheerio')
 const React = require('react')
 const ReactDOM = require('react-dom')
 const PropTypes = require('prop-types')
+const shell = require('electron').shell
 
 // Application
 class Application extends React.Component {
@@ -123,6 +124,11 @@ class ContentHeaderComponent extends React.Component {
 
 // Body
 class ContentBodyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.urlClicked= this.urlClicked.bind(this)
+  }
+
   render() {
     const style = {
       backgroundColor: '#272822',
@@ -147,10 +153,16 @@ class ContentBodyComponent extends React.Component {
     return React.createElement('div', {style},
       React.createElement('a', {
         style: urlStyle,
-        href: this.props.url
+        href: this.props.url,
+        onClick: this.urlClicked
       }, 'From ' + this.props.url),
       React.createElement('div', {style: textStyle}, this.props.lyrics)
     )
+  }
+
+  urlClicked(e) {
+    e.preventDefault()
+    shell.openExternal(this.props.url)
   }
 }
 
