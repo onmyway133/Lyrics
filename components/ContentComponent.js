@@ -6,8 +6,9 @@ const shell = require('electron').shell
 class ContentComponent extends React.Component {
   render() {
     const style = {
-      flexDirection: 'column',
-      display: 'flex',
+      // Can't compose flex !!??
+      // flexDirection: 'column',
+      // display: 'flex',
       width: '100%'
     }
 
@@ -26,13 +27,12 @@ class ContentHeaderComponent extends React.Component {
       height: '150px',
       width: '100%',
       display: 'flex',
-      alignItems: 'stretch'
+      alignItems: 'center'
     }
 
     const imageStyle = {
-      marginTop: '10px',
       marginLeft: '10px',
-      height: 'calc(90% - 10px)',
+      height: '90%',
       width: 'auto',
       borderRadius: '5px'
     }
