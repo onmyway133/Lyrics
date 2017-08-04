@@ -10,6 +10,18 @@
 
 - Icon http://emojione.com/
 
+### Lyric
+
+- [x] Genius
+- [ ] AZ Lyrics
+- [ ] Musix Match
+
+### Song
+
+- [x] Spotify
+- [ ] Youtube
+- [ ] Soundcloud
+
 ## Author
 
 Khoa Pham, onmyway133@gmail.com
