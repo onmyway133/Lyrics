@@ -99,11 +99,13 @@ class ContentHeaderComponent extends React.Component {
     }
 
     const trackNameTextStyle = {
-      color: 'white'
+      color: 'white',
+      margin: '0px'
     }
 
     const artistNameTextStyle = {
-      color: '#A0A0A0'
+      color: '#A0A0A0',
+      margin: '0px'
     }
 
     return React.createElement('div', {style},
@@ -129,15 +131,17 @@ class ContentBodyComponent extends React.Component {
 
     const urlStyle = {
       color: '#A0A0A0',
-      fontFamily: 'Sans-serif'
+      fontFamily: 'Sans-serif',
+      fontSize: '12px'
     }
 
     const textStyle = {
       overflow: 'auto',
       whiteSpace: 'pre-wrap',
-      color: 'white',
+      color: '#F8F8F0',
       fontFamily: 'Sans-serif',
-      marginTop: '10px'
+      marginTop: '10px',
+      lineHeight: '130%'
     }
 
     return React.createElement('div', {style},
