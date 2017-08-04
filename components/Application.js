@@ -8,6 +8,26 @@ const ContentComponent = require('./ContentComponent.js')
 
 class Application extends React.Component {
   render() {
+    let style = {
+
+    }
+
+    let buttonStyle = {
+      position: 'fixed',
+      top: '5px',
+      right: '5px'
+    }
+
+    return React.createElement('div', {style}, 
+      this.loadChild(),
+      React.createElement('button', {
+        style: buttonStyle,
+        onClick: this.close
+      }, '❌')
+    )
+  }
+
+  loadChild() {
     if (this.props.loading) {
       return React.createElement(LoadingComponent)
     } else if (this.props.content) {
@@ -15,6 +35,10 @@ class Application extends React.Component {
     } else {
       return React.createElement(ErrorComponent)
     }
+  }
+
+  close() {
+    
   }
 }
 
