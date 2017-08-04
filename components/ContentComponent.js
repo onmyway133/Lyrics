@@ -7,7 +7,8 @@ class ContentComponent extends React.Component {
   render() {
     const style = {
       flexDirection: 'column',
-      display: 'flex'
+      display: 'flex',
+      width: '100%'
     }
 
     return React.createElement('div', {style},
