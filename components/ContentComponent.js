@@ -21,7 +21,7 @@ class ContentComponent extends React.Component {
 class ContentHeaderComponent extends React.Component {
   render() {
     const style = {
-      backgroundColor: '#282828',
+      backgroundColor: '#272822',
       height: '150px',
       width: '100%',
       display: 'flex',
@@ -75,7 +75,7 @@ class ContentBodyComponent extends React.Component {
 
   render() {
     const style = {
-      backgroundColor: '#272822',
+      backgroundColor: '#282828',
       padding: '10px'
     }
 
