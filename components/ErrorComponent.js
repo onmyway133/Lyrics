@@ -8,11 +8,17 @@ class ErrorComponent extends React.Component {
       width: '100%',
       alignSelf: 'stretch',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      backgroundColor: '#C1392B',
+    }
+
+    const textStyle = {
+      color: '#F8F8F0',
+      fontFamily: 'Sans-serif',
     }
 
     return React.createElement('div', {style},
-      React.createElement('p', {}, 'Error')
+      React.createElement('p', {style: textStyle}, 'Error 😢')
     )
   }
 }
