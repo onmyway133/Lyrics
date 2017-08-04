@@ -9,11 +9,19 @@ class LoadingComponent extends React.Component {
       justifyContent: 'center',
       width: '100%',
       height: '100%',
-      backgroundColor: 'yellow'
+      backgroundColor: '#2176CF'
+    }
+
+    const imageStyle = {
+      height: '50%',
+      width: 'auto'
     }
 
     return React.createElement('div', {style}, 
-      React.createElement('p', {}, 'Loading')
+      React.createElement('img', {
+        style: imageStyle,
+        src: './images/loading.gif'
+      })
     )
   }
 }
