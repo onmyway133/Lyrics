@@ -14,7 +14,7 @@ const htmlUrl = Url.format({
 
 const menubar = MenuBar({
   tooltip: 'Lyrics: click to show the lyric of the currenly playing song',
-  icon: 'Icon/Icon.png',
+  icon: __dirname + '/Icon/Icon.png',
   index: htmlUrl,
   minWidth: 500,
   minHeight: 400
