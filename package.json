@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "electron main.js",
-    "release": "electron-packager . --icon=Icon/Icon@2x.png"
+    "release": "electron-packager . --icon=Icon/Icon.icns"
   },
   "dependencies": {
     "applescript": "^1.0.0",
