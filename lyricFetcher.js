@@ -3,6 +3,7 @@ const Fetch = require('node-fetch')
 const Genius = require("node-genius");
 const geniusClient = new Genius('jVyKdgWaa8MLgyC08qJg2-eV7jtlio-7vNwuTlFmfVdBmKWqcSpWwbK14V9r7qS9')
 const Cheerio = require('cheerio')
+const StringSimilarity = require('string-similarity')
 
 // Return Observable<{url, lyrics}>
 function fetchLyrics(json) {
@@ -26,9 +27,10 @@ class GeniusFetcher {
   // Returns Observable<song>
   search(json) {
     const observable = Rx.Observable.create((observer) => {
-      geniusClient.search(json.trackName + ' ' + json.artistName, function (error, results) {
+      geniusClient.search(json.trackName + ' ' + json.artistName, (error, results) => {
         const object = JSON.parse(results)
-        const song = object.response.hits[0].result
+        const song = this.guessBestMatch(object.response.hits, json)
+
         if (song) {
           observer.next(song)
           observer.complete()
@@ -70,7 +72,21 @@ class GeniusFetcher {
 
     return lyrics
   }
+
+  // json: recognised song
+  // hits: after search
+  guessBestMatch(hits, json) {
+    const titles = hits.map((hit) => {
+      return hit.result.full_title
+    })
+
+    const similarities = StringSimilarity.findBestMatch(json.trackName, titles)
+
+
+    return hits[0].result
+  }
 }
+
 
 module.exports = {
   fetchLyrics
