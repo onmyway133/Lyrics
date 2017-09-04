@@ -1,7 +1,7 @@
 {
   "name": "lyrics",
   "productName": "Lyrics",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "main.js",
   "devDependencies": {
     "electron-prebuilt": "^1.4.13"
