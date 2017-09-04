@@ -81,9 +81,20 @@ class GeniusFetcher {
     })
 
     const similarities = StringSimilarity.findBestMatch(json.trackName, titles)
+    const index = this.indexOfMax(similarities)
 
+    return hits[index].result
+  }
 
-    return hits[0].result
+  indexOfMax(similarities) {
+    let index = 0
+    similarities.ratings.forEach((value, i) => {
+      if (value.target == similarities.bestMatch.target) {
+        index = i
+      }
+    })
+
+    return index
   }
 }
 
