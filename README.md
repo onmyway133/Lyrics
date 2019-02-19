@@ -1,5 +1,7 @@
 # Lyrics
 
+❤️ Support my work https://gum.co/YjJG ❤️
+
 <div align = "center">
 <img src="Screenshots/Icon.png" width="130" height="130" />
 <br />
